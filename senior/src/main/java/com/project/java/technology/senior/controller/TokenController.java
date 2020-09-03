@@ -1,5 +1,6 @@
 package com.project.java.technology.senior.controller;
 
+import com.project.java.technology.core.model.ResponseCodeEnum;
 import com.project.java.technology.core.model.ResponseModel;
 import com.project.java.technology.senior.model.SecretToken;
 import com.project.java.technology.senior.service.ISecretTokenService;
@@ -29,7 +30,7 @@ public class TokenController {
         if (secretToken != null) {
             return ResponseModel.success(JwtUtils.sign(appKey));
         } else {
-            return ResponseModel.fail();
+            return ResponseModel.fail(ResponseCodeEnum.APP_KEY_NOT_EXIST);
         }
     }
 

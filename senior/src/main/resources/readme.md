@@ -12,3 +12,7 @@
 加密后的密码: eAjJfxS+2KTELRqsjm6hNNVOJ5bAe7y8LtpDkswvNof+r2h967SD5APzta0U7cyH22goZdEWMGQaMK4nMTh2Gg==
 解密后: qwer1234
 
+环境变量配置：
+config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKaupSRcaRBPNZuzd8QCihL3EnNkrKZTrnnKv1lKuMWR2uXLWYCme/woj7r9GN0bBkoyyfNfaEtVx6rUXVkw60UCAwEAAQ==
+string.encrypt.salt=java_123456
+

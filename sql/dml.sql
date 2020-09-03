@@ -1,0 +1,1 @@
+insert into secret_token (app_key, app_name, created_time) values ('key001', 'testapp', now());

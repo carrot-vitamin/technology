@@ -7,9 +7,6 @@ create table user (
     photo longblob
 );
 
--- ----------------------------
--- Table structure for file
--- ----------------------------
 DROP TABLE IF EXISTS `file`;
 CREATE TABLE `file` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -21,4 +18,14 @@ CREATE TABLE `file` (
   `create_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   `update_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `secret_token`;
+CREATE TABLE `secret_token` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`app_key` varchar(255) CHARACTER SET utf8 NOT NULL,
+`app_name` varchar(255) NOT NULL,
+`created_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

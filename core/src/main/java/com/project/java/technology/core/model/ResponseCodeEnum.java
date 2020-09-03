@@ -24,7 +24,11 @@ public enum ResponseCodeEnum {
 
     FILE_NOT_EXIST("000101", "未找到指定文件"),
 
-    AUTH_FAILURE("000102", "token认证失败");
+    AUTH_FAILURE("000102", "token认证失败"),
+
+    APP_KEY_NOT_EXIST("000103", "appKey不存在"),
+
+    ;
 
     private String code;
 

@@ -8,7 +8,10 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
 @Aspect
@@ -32,7 +35,11 @@ public class LogInterceptor {
             for (Object arg : args) {
                 argTypeBuilder.append(arg.getClass().getName());
                 argTypeBuilder.append(",");
-                argValueBuilder.append(JSON.toJSONString(arg));
+                if (!disPrintParam(arg)) {
+                    argValueBuilder.append(JSON.toJSONString(arg));
+                } else {
+                    log.info("无法打印参数：【{}】", arg.getClass().getName());
+                }
             }
             log.info("拦截到请求：{}.{}({})", proceedingJoinPoint.getTarget().getClass().getName(), method.getName(), argTypeBuilder.toString());
             log.info("拦截到请求参数：{} ", argValueBuilder.toString());
@@ -47,6 +54,13 @@ public class LogInterceptor {
             }
         }
         return result;
+    }
+
+    private boolean disPrintParam(Object o) {
+        return o instanceof HttpServletRequest
+                || o instanceof HttpServletResponse
+                || o instanceof MultipartFile
+                ;
     }
 
 }
