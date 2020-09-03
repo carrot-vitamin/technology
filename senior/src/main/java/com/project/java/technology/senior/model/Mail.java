@@ -1,0 +1,52 @@
+package com.project.java.technology.senior.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Date;
+
+/**
+ * @author Shaobo Yin
+ * 2020/8/10 12:02
+ */
+@Data
+public class Mail {
+
+    /**
+     * 邮件接收人
+     */
+    private String to;
+
+    /**
+     * 邮件主题
+     */
+    private String subject;
+
+    /**
+     * 邮件内容
+     */
+    private String text;
+
+    /**
+     * 发送时间
+     */
+    private Date sentDate;
+
+    /**
+     * 抄送
+     */
+    private String cc;
+
+    /**
+     * 密送
+     */
+    private String bcc;
+
+    /**
+     * 邮件附件
+     */
+    @JsonIgnore
+    private MultipartFile[] files;
+
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.java.technology.senior.mapper.FileModelMapper" >
+    <resultMap id="FileModelMap" type="com.project.java.technology.senior.model.FileModel" >
+        <id column="id" property="id" javaType="long" jdbcType="INTEGER" />
+        <result column="orig_file_name" property="origFileName" javaType="string" jdbcType="VARCHAR" />
+        <result column="file_name" property="fileName" javaType="string" jdbcType="VARCHAR" />
+        <result column="file_path" property="filePath" javaType="string" jdbcType="VARCHAR" />
+        <result column="file_id" property="fileId" javaType="string" jdbcType="VARCHAR" />
+        <result column="request_ip" property="requestIP" javaType="string" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="DATE" />
+        <result column="update_time" property="updateTime" javaType="java.util.Date" jdbcType="DATE" />
+    </resultMap>
+
+    <sql id="Column_List" >
+        id, orig_file_name, file_name, file_path, file_id, request_ip, create_time, update_time
+    </sql>
+
+    <insert id="insert" parameterType="com.project.java.technology.senior.model.FileModel">
+        INSERT INTO file (orig_file_name, file_name, file_path, file_id, request_ip, create_time, update_time)
+        VALUE
+        (#{origFileName},
+        #{fileName},
+        #{filePath},
+        #{fileId},
+        #{requestIP},
+        now(),
+        now())
+    </insert>
+
+    <select id="findByFileId" parameterType="string" resultMap="FileModelMap">
+        SELECT <include refid="Column_List"/> FROM file WHERE file_id = #{fileId}
+    </select>
+
+</mapper>
