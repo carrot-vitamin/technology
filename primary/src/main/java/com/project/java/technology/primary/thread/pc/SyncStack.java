@@ -35,7 +35,6 @@ public class SyncStack {
         while (index == 0) {
             try {
                 System.out.println("消费者进入消费... ...");
-                Thread.sleep(1000);
                 this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
