@@ -29,3 +29,12 @@ CREATE TABLE `secret_token` (
 `created_time` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `person` (
+`id` int(11) NOT NULL,
+`name` varchar(10) DEFAULT NULL,
+`age` int(11) DEFAULT NULL,
+`gender` varchar(2) NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+

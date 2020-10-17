@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: 192.168.135.130
+    host: 192.168.71.129
     port: 6379
     password: java@AnPLaPqcBGkrJ/Qxfp5GnsBu+bR3bbRm4e6s3KU39/C20fv2lG8dqnuUInf3XTqi
     jedis:
@@ -10,7 +10,7 @@ spring:
         min-idle: 0
         max-wait: -1ms
   datasource:
-    url: jdbc:mysql://192.168.135.130:3306/java?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://192.168.71.129:3306/java?useUnicode=true&characterEncoding=utf8
     username: root
     password: eAjJfxS+2KTELRqsjm6hNNVOJ5bAe7y8LtpDkswvNof+r2h967SD5APzta0U7cyH22goZdEWMGQaMK4nMTh2Gg==
     driver-class-name: com.mysql.cj.jdbc.Driver

@@ -5,14 +5,27 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
+  batch:
+    job:
+      # 默认自动执行定义的Job(true)，改为false，需要JobLauncher.run执行
+      enabled: false
+    # spring batch在数据库里面创建默认的数据表，如果不是always则会提示相关表不存在
+    # 首次可以设置always来自动创建表，之后应关闭该配置。或通过脚本初始化相关表
+#    initialize-schema: always
 
 http:
-  maxTotal: 100 #最大连接数
-  defaultMaxPerRoute: 20 #并发数
-  connectTimeout: 1000 #创建连接的最长时间
-  connectionRequestTimeout: 500 #从连接池中获取到连接的最长时间
-  socketTimeout: 10000 #数据传输的最长时间
-  staleConnectionCheckEnabled: true #提交请求前测试连接是否可用
+  #最大连接数
+  maxTotal: 100
+  #并发数
+  defaultMaxPerRoute: 20
+  #创建连接的最长时间
+  connectTimeout: 1000
+  #从连接池中获取到连接的最长时间
+  connectionRequestTimeout: 500
+  #数据传输的最长时间
+  socketTimeout: 10000
+  #提交请求前测试连接是否可用
+  staleConnectionCheckEnabled: true
 
 cache:
   prefix: cache_java_senior_
