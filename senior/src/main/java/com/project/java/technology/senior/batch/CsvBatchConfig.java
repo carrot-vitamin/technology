@@ -90,7 +90,7 @@ public class CsvBatchConfig {
      * @return
      */
     @Bean
-    public CsvBeanValidator csvBeanValidator(){
+    public CsvBeanValidator<Person> csvBeanValidator(){
         return new CsvBeanValidator<Person>();
     }
 
