@@ -1,0 +1,15 @@
+package com.project.java.technology.senior.service.strategy.v2.impl;
+
+import com.project.java.technology.senior.service.strategy.v2.ITest;
+
+/**
+ * @author za-yinshaobo
+ * @date 2020/10/19 17:11
+ */
+public class TestB implements ITest {
+
+    @Override
+    public String toString() {
+        return "TestB";
+    }
+}
