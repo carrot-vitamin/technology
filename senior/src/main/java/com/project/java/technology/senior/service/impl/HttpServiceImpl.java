@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -99,7 +100,7 @@ public class HttpServiceImpl implements IHttpService {
     public String postJson(String url, String json) throws Exception {
         HttpPost httpPost = new HttpPost(url);
         httpPost.setConfig(config);
-        StringEntity entity = new StringEntity(json, Charset.forName("utf-8"));
+        StringEntity entity = new StringEntity(json, StandardCharsets.UTF_8);
         entity.setContentType("application/json");
         httpPost.setEntity(entity);
         // 发起请求
