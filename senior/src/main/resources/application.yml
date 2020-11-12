@@ -5,13 +5,6 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
-  batch:
-    job:
-      # 默认自动执行定义的Job(true)，改为false，需要JobLauncher.run执行
-      enabled: false
-    # spring batch在数据库里面创建默认的数据表，如果不是always则会提示相关表不存在
-    # 首次可以设置always来自动创建表，之后应关闭该配置。或通过脚本初始化相关表
-#    initialize-schema: always
 
 http:
   #最大连接数
