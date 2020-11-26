@@ -16,3 +16,7 @@
 > config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKaupSRcaRBPNZuzd8QCihL3EnNkrKZTrnnKv1lKuMWR2uXLWYCme/woj7r9GN0bBkoyyfNfaEtVx6rUXVkw60UCAwEAAQ==
 > string.encrypt.salt=java_123456
 
+
+批处理模块参考文献：
+> https://blog.csdn.net/wuzhiwei549/article/details/85394406
+
