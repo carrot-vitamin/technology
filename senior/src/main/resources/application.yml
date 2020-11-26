@@ -5,6 +5,8 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
+  batch:
+    initialize-schema: always
 
 http:
   #最大连接数
