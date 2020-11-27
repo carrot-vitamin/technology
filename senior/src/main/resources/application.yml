@@ -6,7 +6,11 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
   batch:
+    # 自动建表
     initialize-schema: always
+    job:
+      # 关闭项目启动时Batch自动执行job的操作
+      enabled: false
 
 http:
   #最大连接数
