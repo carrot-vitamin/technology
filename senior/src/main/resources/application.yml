@@ -11,6 +11,8 @@ spring:
     job:
       # 关闭项目启动时Batch自动执行job的操作
       enabled: false
+  jackson:
+    time-zone: GMT+8
 
 http:
   #最大连接数
@@ -32,3 +34,4 @@ cache:
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.project.java.technology.senior.model
+
