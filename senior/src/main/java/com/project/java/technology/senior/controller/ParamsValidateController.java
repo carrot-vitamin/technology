@@ -1,5 +1,6 @@
 package com.project.java.technology.senior.controller;
 
+import com.project.java.technology.senior.model.GroupValidParamReqDTO;
 import com.project.java.technology.senior.model.ValidParamReqDTO;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,24 @@ public class ParamsValidateController {
      */
     @PostMapping("/validParams")
     public ValidParamReqDTO validParams(@Validated ValidParamReqDTO reqDTO) {
+        return reqDTO;
+    }
+
+
+    /** 分组校验、顺序校验 **/
+
+    @PostMapping("/group1")
+    public GroupValidParamReqDTO validParams1(@Validated(value = {GroupValidParamReqDTO.Group1.class}) GroupValidParamReqDTO reqDTO) {
+        return reqDTO;
+    }
+
+    @PostMapping("/group2")
+    public GroupValidParamReqDTO validParams2(@Validated(value = {GroupValidParamReqDTO.Group2.class}) GroupValidParamReqDTO reqDTO) {
+        return reqDTO;
+    }
+
+    @PostMapping("/order")
+    public GroupValidParamReqDTO validParams3(@Validated(value = {GroupValidParamReqDTO.GroupOrdered.class}) GroupValidParamReqDTO reqDTO) {
         return reqDTO;
     }
 }
