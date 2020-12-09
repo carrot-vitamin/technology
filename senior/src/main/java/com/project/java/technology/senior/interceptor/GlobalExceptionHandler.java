@@ -3,6 +3,9 @@ package com.project.java.technology.senior.interceptor;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.internal.engine.path.PathImpl;
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -24,20 +27,69 @@ public class GlobalExceptionHandler {
      * @param e 参数校验异常
      * @return 响应数据
      */
-    @ExceptionHandler(value = ConstraintViolationException.class)
-    public JSONObject validateHandle(ConstraintViolationException e) {
+    @ExceptionHandler(value = Exception.class)
+    public JSONObject validateParamsHandle(Exception e) {
+        log.error("全局异常捕捉... ...", e);
+        JSONObject jsonObject;
+        if (e instanceof ConstraintViolationException) {
+            //针对直接对参数注解校验
+            ConstraintViolationException exception = (ConstraintViolationException) e;
+            jsonObject = this.validParamsResponse(exception);
+        } else if (e instanceof BindException) {
+            //针对入参为DTO对象的校验
+            BindException exception = (BindException) e;
+            jsonObject = this.validParamsResponse(exception);
+        } else {
+            jsonObject = new JSONObject();
+            jsonObject.put("code", "999999");
+            jsonObject.put("message", e.getMessage());
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 针对直接对参数注解校验
+     *
+     * @return response
+     */
+    private JSONObject validParamsResponse(ConstraintViolationException exception) {
         StringBuilder msg = new StringBuilder();
-        Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations();
+        Set<ConstraintViolation<?>> constraintViolations = exception.getConstraintViolations();
         for (ConstraintViolation<?> constraintViolation : constraintViolations) {
             PathImpl pathImpl = (PathImpl) constraintViolation.getPropertyPath();
             String paramName = pathImpl.getLeafNode().getName();
             String message = constraintViolation.getMessage();
             msg.append("[").append(message).append("]");
         }
-        log.error(msg.toString(), e);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("code", "999999");
         jsonObject.put("message", msg.toString());
+        return jsonObject;
+    }
+
+    /**
+     * 针对入参为DTO对象的校验
+     *
+     * @param exception MethodArgumentNotValidException
+     * @return response
+     */
+    private JSONObject validParamsResponse(BindException exception) {
+        BindingResult bindingResult = exception.getBindingResult();
+        JSONObject jsonObject = new JSONObject();
+        if (bindingResult.hasErrors()) {
+            FieldError fieldError = bindingResult.getFieldError();
+            StringBuilder builder = new StringBuilder();
+            if (fieldError != null) {
+                String field = fieldError.getField();
+                String defaultMessage = fieldError.getDefaultMessage();
+                builder.append(field).append(":").append(defaultMessage).append(";");
+            }
+            jsonObject.put("code", "999999");
+            jsonObject.put("message", builder.toString());
+        } else {
+            jsonObject.put("code", "999999");
+            jsonObject.put("message", exception.getMessage());
+        }
         return jsonObject;
     }
 
