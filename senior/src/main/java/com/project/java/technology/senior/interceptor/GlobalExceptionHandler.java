@@ -6,11 +6,13 @@ import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -38,6 +40,9 @@ public class GlobalExceptionHandler {
         } else if (e instanceof BindException) {
             //针对入参为DTO对象的校验
             BindException exception = (BindException) e;
+            jsonObject = this.validParamsResponse(exception);
+        } else if (e instanceof MethodArgumentNotValidException) {
+            MethodArgumentNotValidException exception = (MethodArgumentNotValidException) e;
             jsonObject = this.validParamsResponse(exception);
         } else {
             jsonObject = new JSONObject();
@@ -75,14 +80,23 @@ public class GlobalExceptionHandler {
      */
     private JSONObject validParamsResponse(BindException exception) {
         BindingResult bindingResult = exception.getBindingResult();
+        return buildValidErrorResponse(bindingResult, exception);
+    }
+
+    private JSONObject validParamsResponse(MethodArgumentNotValidException exception) {
+        BindingResult bindingResult = exception.getBindingResult();
+        return buildValidErrorResponse(bindingResult, exception);
+    }
+
+    private JSONObject buildValidErrorResponse(BindingResult bindingResult, Exception exception) {
         JSONObject jsonObject = new JSONObject();
         if (bindingResult.hasErrors()) {
-            FieldError fieldError = bindingResult.getFieldError();
+            List<FieldError> fieldErrors = bindingResult.getFieldErrors();
             StringBuilder builder = new StringBuilder();
-            if (fieldError != null) {
+            for (FieldError fieldError : fieldErrors) {
                 String field = fieldError.getField();
                 String defaultMessage = fieldError.getDefaultMessage();
-                builder.append(field).append(":").append(defaultMessage).append(";");
+                builder.append(field).append(":").append(defaultMessage).append("; ");
             }
             jsonObject.put("code", "999999");
             jsonObject.put("message", builder.toString());

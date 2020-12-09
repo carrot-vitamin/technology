@@ -20,6 +20,8 @@ public class DateController {
 
         /**
          * 定义输入格式
+         * <p>@DateTimeFormat 用于form表单提交方式</P>
+         * <p>@JsonFormat 用于body提交方式</P>
          */
         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private Date inputDate;

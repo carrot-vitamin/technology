@@ -48,4 +48,12 @@ public class ParamsValidateController {
     public GroupValidParamReqDTO validParams3(@Validated(value = {GroupValidParamReqDTO.GroupOrdered.class}) GroupValidParamReqDTO reqDTO) {
         return reqDTO;
     }
+
+    /**
+     * 嵌套校验
+     */
+    @PostMapping("/innerObjValid")
+    public ValidParamReqDTO innerObjValid(@Validated @RequestBody ValidParamReqDTO reqDTO) {
+        return reqDTO;
+    }
 }

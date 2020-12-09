@@ -1,5 +1,8 @@
 package com.project.java.technology.senior.config;
 
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.support.config.FastJsonConfig;
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.project.java.technology.senior.interceptor.TokenInterceptor;
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyDetector;
 import org.jasypt.encryption.StringEncryptor;
@@ -19,6 +22,8 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author yinshaobo
@@ -100,5 +105,32 @@ public class WebConfig implements WebMvcConfigurer {
         encryptor.setConfig(config);
         return encryptor;
     }
+
+    /**
+     * JSON序列化输入和输出
+     * @return converter
+     */
+    @Bean
+    public FastJsonHttpMessageConverter fastJsonHttpMessageConverter() {
+        FastJsonHttpMessageConverter messageConverter = new FastJsonHttpMessageConverter();
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        //数据编码-UTF-8
+        fastJsonConfig.setCharset(StandardCharsets.UTF_8);
+        fastJsonConfig.setSerializerFeatures(
+                //在生成的JSON中输出类名
+                SerializerFeature.WriteClassName,
+                //输出value为null的数据
+                SerializerFeature.WriteMapNullValue,
+                //空集合输出[]而不是null
+                SerializerFeature.WriteNullListAsEmpty,
+                //空字符串输出""而不是null
+                SerializerFeature.WriteNullStringAsEmpty,
+                //生成的json格式话
+                SerializerFeature.PrettyFormat
+        );
+        messageConverter.setFastJsonConfig(fastJsonConfig);
+        return messageConverter;
+    }
+
 
 }

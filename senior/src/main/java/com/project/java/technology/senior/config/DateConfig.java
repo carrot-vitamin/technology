@@ -1,9 +1,9 @@
 package com.project.java.technology.senior.config;
 
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Primary;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -43,17 +44,17 @@ public class DateConfig {
         }
     }
 
-//    static class DateDeserializer extends JsonDeserializer<Date> {
-//
-//        @Override
-//        public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-//            DateFormat dateFormat = new SimpleDateFormat(PATTERN);
-//            String date = jsonParser.getText();
-//            try {
-//                return dateFormat.parse(date);
-//            } catch (ParseException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//    }
+    static class DateDeserializer extends JsonDeserializer<Date> {
+
+        @Override
+        public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+            DateFormat dateFormat = new SimpleDateFormat(PATTERN);
+            String date = jsonParser.getText();
+            try {
+                return dateFormat.parse(date);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }
