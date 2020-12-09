@@ -23,22 +23,24 @@ public class LogInterceptor {
     public void validatorMethodPointcut() {}
 
     @Around("validatorMethodPointcut()")
-    public Object aroundAdvisor(ProceedingJoinPoint proceedingJoinPoint) {
+    public Object aroundAdvisor(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
         Method method = methodSignature.getMethod();
-        Object result = null;
+        Object result;
         try {
             Object[] args = proceedingJoinPoint.getArgs();
             StringBuilder argTypeBuilder = new StringBuilder();
             StringBuilder argValueBuilder = new StringBuilder();
             for (Object arg : args) {
-                argTypeBuilder.append(arg.getClass().getName());
-                argTypeBuilder.append(",");
-                if (!disPrintParam(arg)) {
-                    argValueBuilder.append(JSON.toJSONString(arg));
-                } else {
-                    log.info("无法打印参数：【{}】", arg.getClass().getName());
+                if (arg != null) {
+                    argTypeBuilder.append(arg.getClass().getName());
+                    argTypeBuilder.append(",");
+                    if (!disPrintParam(arg)) {
+                        argValueBuilder.append(JSON.toJSONString(arg));
+                    } else {
+                        log.info("无法打印参数：【{}】", arg.getClass().getName());
+                    }
                 }
             }
             log.info("拦截到请求：{}.{}({})", proceedingJoinPoint.getTarget().getClass().getName(), method.getName(), argTypeBuilder.toString());
@@ -46,12 +48,8 @@ public class LogInterceptor {
         } catch (Exception e) {
             log.error("invoke method {} exception: {}", method.getName(), e);
         } finally {
-            try {
-                result = proceedingJoinPoint.proceed();
-                log.info("拦截到返回数据：{}", JSON.toJSONString(result));
-            } catch (Throwable throwable) {
-                log.error("invoke method {} exception: {}", method.getName(), throwable);
-            }
+            result = proceedingJoinPoint.proceed();
+            log.info("拦截到返回数据：{}", JSON.toJSONString(result));
         }
         return result;
     }
