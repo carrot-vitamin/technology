@@ -1,11 +1,16 @@
 package com.project.java.technology.senior.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.project.java.technology.senior.model.GroupValidParamReqDTO;
 import com.project.java.technology.senior.model.ValidParamReqDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 /**
  * @author za-yinshaobo at 2020/12/9 10:36
@@ -55,5 +60,28 @@ public class ParamsValidateController {
     @PostMapping("/innerObjValid")
     public ValidParamReqDTO innerObjValid(@Validated @RequestBody ValidParamReqDTO reqDTO) {
         return reqDTO;
+    }
+
+    /**
+     * 编程式参数校验
+     */
+    @Autowired
+    private Validator validator;
+
+    @PostMapping("/validParams5")
+    public Object validParams5(@RequestBody ValidParamReqDTO reqDTO) {
+        Set<ConstraintViolation<ValidParamReqDTO>> validate = this.validator.validate(reqDTO);
+        if (validate.isEmpty()) {
+            return reqDTO;
+        } else {
+            StringBuilder builder = new StringBuilder();
+            for (ConstraintViolation<ValidParamReqDTO> v : validate) {
+                builder.append(v.getPropertyPath()).append(":").append(v.getMessage()).append("; ");
+            }
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("code", "999999");
+            jsonObject.put("message", builder.toString());
+            return jsonObject;
+        }
     }
 }
