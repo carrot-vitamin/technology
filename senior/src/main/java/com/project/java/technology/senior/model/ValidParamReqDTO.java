@@ -1,6 +1,7 @@
 package com.project.java.technology.senior.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.project.java.technology.senior.annotation.MyNotBlank;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.Length;
@@ -18,6 +19,9 @@ import java.util.List;
  */
 @Data
 public class ValidParamReqDTO {
+
+    @MyNotBlank(message = "自定义 不能为空")
+    private String myValidator;
 
     @NotNull(message = "不允许为空")
     @AssertFalse(message = "必须是false")
