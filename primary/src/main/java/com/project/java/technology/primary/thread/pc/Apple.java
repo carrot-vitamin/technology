@@ -3,7 +3,7 @@ package com.project.java.technology.primary.thread.pc;
 import lombok.AllArgsConstructor;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * 2020/9/24 15:01
  */
 @AllArgsConstructor

@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * @date 2020/10/19 17:00
  */
 public abstract class AbsStrategy2 implements Strategy2 {

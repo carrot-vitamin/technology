@@ -3,7 +3,7 @@ package com.project.java.technology.senior.service.strategy.v2.impl;
 import com.project.java.technology.senior.service.strategy.v2.ITest;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * @date 2020/10/19 17:11
  */
 public class TestB implements ITest {

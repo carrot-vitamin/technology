@@ -17,7 +17,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 /**
- * @author za-yinshaobo at 2020/12/11 17:46
+ * @author ShaoBo Yin at 2020/12/11 17:46
  * 实现用于groovy动态脚本运行的controller
  */
 @Slf4j

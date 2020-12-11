@@ -1,5 +1,5 @@
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * 2020/9/24 15:00
  * 生产者消费者模型
  */

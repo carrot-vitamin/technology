@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.annotation.Resource;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * 2020/9/3 14:20
  */
 @SpringBootTest

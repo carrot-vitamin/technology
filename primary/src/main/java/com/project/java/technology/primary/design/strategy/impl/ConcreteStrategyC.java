@@ -3,7 +3,7 @@ package com.project.java.technology.primary.design.strategy.impl;
 import com.project.java.technology.primary.design.strategy.Strategy;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * @date 2020/10/19 16:27
  * 具体策略类
  */

@@ -3,7 +3,7 @@ package com.project.java.technology.senior.config;
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyDetector;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * 2020/9/2 16:34
  * 自定义加密前缀
  */

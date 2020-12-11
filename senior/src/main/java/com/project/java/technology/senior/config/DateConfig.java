@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author za-yinshaobo at 2020/12/8 15:56
+ * @author ShaoBo Yin at 2020/12/8 15:56
  */
 @Configuration
 public class DateConfig {

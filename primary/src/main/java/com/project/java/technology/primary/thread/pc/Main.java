@@ -1,7 +1,7 @@
 package com.project.java.technology.primary.thread.pc;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * 2020/9/24 15:17
  */
 public class Main {

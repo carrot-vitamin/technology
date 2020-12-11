@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 
 /**
- * @author za-yinshaobo at 2020/11/30 16:30
+ * @author ShaoBo Yin at 2020/11/30 16:30
  */
 @EnableBatchProcessing
 @Configuration

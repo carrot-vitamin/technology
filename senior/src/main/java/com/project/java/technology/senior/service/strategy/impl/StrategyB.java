@@ -3,7 +3,7 @@ package com.project.java.technology.senior.service.strategy.impl;
 import org.springframework.stereotype.Component;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * @date 2020/10/19 16:48
  */
 @Component

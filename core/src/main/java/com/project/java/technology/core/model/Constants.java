@@ -1,7 +1,7 @@
 package com.project.java.technology.core.model;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * 2020/9/3 15:06
  */
 public interface Constants {

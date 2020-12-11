@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author za-yinshaobo at 2020/11/27 10:48
+ * @author ShaoBo Yin at 2020/11/27 10:48
  */
 @RestController
 @RequestMapping(value = "job")

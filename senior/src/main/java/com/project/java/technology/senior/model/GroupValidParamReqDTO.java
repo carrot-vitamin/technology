@@ -6,7 +6,7 @@ import javax.validation.GroupSequence;
 import javax.validation.constraints.DecimalMax;
 
 /**
- * @author za-yinshaobo at 2020/12/9 11:17
+ * @author ShaoBo Yin at 2020/12/9 11:17
  * 参数校验
  */
 @Data

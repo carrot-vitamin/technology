@@ -1,7 +1,7 @@
 package com.project.java.technology.primary.design.strategy.example;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * @date 2020/10/19 16:35
  * 价格类
  */

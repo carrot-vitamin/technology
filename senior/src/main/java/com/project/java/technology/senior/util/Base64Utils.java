@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * 2020/9/3 16:37
  */
 public class Base64Utils {

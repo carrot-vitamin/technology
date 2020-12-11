@@ -9,7 +9,7 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * @author za-yinshaobo at 2020/12/10 18:26
+ * @author ShaoBo Yin at 2020/12/10 18:26
  * 自定义注解，校验不为空字符串
  */
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })

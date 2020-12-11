@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * @author za-yinshaobo at 2020/12/4 14:41
+ * @author ShaoBo Yin at 2020/12/4 14:41
  */
 @RestController(value = "JobControllerV2")
 @RequestMapping("/job/v2")

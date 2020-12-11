@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 
 /**
- * @author za-yinshaobo at 2020/12/11 17:41
+ * @author ShaoBo Yin at 2020/12/11 17:41
  * 需要注意的是：上面这种方法注册的到binding中beanMap是不包含groovyBinding这个对象本身的（先后顺序的原因），如果需要将binding对象本身（也是一个bean）注册，也很简单，
  * 只需要将Binding的bean生成放在GroovyBindingConfig之前，并且在实现ApplicationContextAware接口的setApplicationContext方法中进行variables的设置即可，
  * 但建议不这样做，因为这样就可以通过脚本对Binding对象本身造成破坏，不太优雅~

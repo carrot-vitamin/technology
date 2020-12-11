@@ -5,7 +5,7 @@ import org.springframework.batch.item.file.transform.FieldSet;
 import org.springframework.validation.BindException;
 
 /**
- * @author za-yinshaobo at 2020/11/30 16:45
+ * @author ShaoBo Yin at 2020/11/30 16:45
  */
 public class UserMapper implements FieldSetMapper<User> {
 

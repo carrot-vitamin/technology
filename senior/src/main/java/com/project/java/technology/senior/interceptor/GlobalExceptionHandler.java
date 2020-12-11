@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author za-yinshaobo at 2020/12/9 10:31
+ * @author ShaoBo Yin at 2020/12/9 10:31
  * 全局异常处理
  */
 @Slf4j

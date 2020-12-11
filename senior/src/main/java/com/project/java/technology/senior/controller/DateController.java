@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 
 /**
- * @author za-yinshaobo at 2020/12/8 15:54
+ * @author ShaoBo Yin at 2020/12/8 15:54
  */
 @RestController
 @RequestMapping("/date")

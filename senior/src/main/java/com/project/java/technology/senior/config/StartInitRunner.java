@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * @author za-yinshaobo
+ * @author ShaoBo Yin
  * 2020/9/2 10:24
  */
 @Slf4j
