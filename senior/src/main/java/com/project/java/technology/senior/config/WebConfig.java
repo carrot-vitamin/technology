@@ -5,6 +5,7 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.project.java.technology.senior.interceptor.TokenInterceptor;
 import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyDetector;
+import org.hibernate.validator.HibernateValidator;
 import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
@@ -23,6 +24,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -58,6 +62,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * swagger配置
+     *
      * @return
      */
     @Bean
@@ -80,9 +85,9 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
 
-
     /**
      * 配置文件加密前缀配置
+     *
      * @return
      */
     @Bean
@@ -108,6 +113,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * JSON序列化输入和输出
+     *
      * @return converter
      */
     @Bean
@@ -130,6 +136,21 @@ public class WebConfig implements WebMvcConfigurer {
         );
         messageConverter.setFastJsonConfig(fastJsonConfig);
         return messageConverter;
+    }
+
+
+    /**
+     * 快速校验失败
+     * Spring Validation默认会校验完所有字段，然后才抛出异常。可以开启Fail Fast模式，一旦校验失败就立即返回。
+     */
+    @Bean
+    public Validator validator() {
+        ValidatorFactory validatorFactory = Validation.byProvider(HibernateValidator.class)
+                .configure()
+                // 快速失败模式
+                .failFast(true)
+                .buildValidatorFactory();
+        return validatorFactory.getValidator();
     }
 
 

@@ -58,6 +58,9 @@ public class ValidParamReqDTO {
     @Length(min = 2, max = 3, message = "字符串长度必须要2~3之间")
     private String str;
 
+    /**
+     * 嵌套验证必须用@Valid
+     */
     @Valid
     @NotNull(message = "对象不允许为空")
     private InnerClass innerClass;
