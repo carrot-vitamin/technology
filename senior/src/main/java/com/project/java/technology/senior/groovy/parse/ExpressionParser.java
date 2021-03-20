@@ -10,19 +10,19 @@ import groovy.lang.GroovyShell;
 public class ExpressionParser {
 
     public static void main(String[] args) {
-        String str1 = "1 + 2 * 3";
-        GroovyShell groovyShell1 = new GroovyShell();
+        String str1 = "code==\"A\"||code==3";
+        String str2 = "if(str1){1}else{\"哈哈\"}";
+
+        Binding binding1 = new Binding();
+        binding1.setVariable("code", 3);
+        GroovyShell groovyShell1 = new GroovyShell(binding1);
         Object value1 = groovyShell1.evaluate(str1);
-        System.out.println(value1);
+        System.out.println("第一步计算结果：" + value1);
 
-
-        String str2 = "A + B * C";
-        Binding binding = new Binding();
-        binding.setVariable("A", 1);
-        binding.setVariable("B", 2);
-        binding.setVariable("C", 3);
-        GroovyShell groovyShell2 = new GroovyShell(binding);
+        Binding binding2 = new Binding();
+        binding2.setVariable("str1", value1);
+        GroovyShell groovyShell2 = new GroovyShell(binding2);
         Object value2 = groovyShell2.evaluate(str2);
-        System.out.println(value2);
+        System.out.println("第二步计算结果：" + value2);
     }
 }
