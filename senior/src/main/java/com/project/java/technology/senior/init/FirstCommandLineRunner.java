@@ -6,7 +6,7 @@ import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 /**
- * @author za-yinshaobo at 2021/1/22 18:32
+ * @author yinshaobo at 2021/1/22 18:32
  */
 @Slf4j
 @Component

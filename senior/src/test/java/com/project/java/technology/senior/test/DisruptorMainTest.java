@@ -10,7 +10,7 @@ import com.lmax.disruptor.dsl.ProducerType;
 import java.util.concurrent.ThreadFactory;
 
 /**
- * @author za-yinshaobo at 2021/1/29 15:28
+ * @author yinshaobo at 2021/1/29 15:28
  * disruptor代码样例。每10ms向disruptor中插入一个元素，消费者读取数据，并打印到终端
  */
 public class DisruptorMainTest {

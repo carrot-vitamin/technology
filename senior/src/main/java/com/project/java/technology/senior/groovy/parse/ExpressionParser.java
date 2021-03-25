@@ -4,7 +4,7 @@ import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 
 /**
- * @author za-yinshaobo at 2021/3/20 16:36
+ * @author yinshaobo at 2021/3/20 16:36
  * 表达式解析
  */
 public class ExpressionParser {
